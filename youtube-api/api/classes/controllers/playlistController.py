@@ -18,14 +18,16 @@ class PlaylistController:
         video_entity = VideoEntity(playlist_id)
         self.playlist_service.add_musics_in_playlist(video_ids, video_entity)
 
-        return
+        return 
     
     def create_playlist(self, playlist_name):
         try:    
             playlist_entity = PlaylistEntity(title=playlist_name, description="teste", videos=[])
             print(playlist_entity)
+
             playlist_id = self.playlist_service.create_playlist(playlist_entity)
             print(playlist_id)
             return playlist_id
+        
         except Exception as e:
             return(f"erro: {e}")

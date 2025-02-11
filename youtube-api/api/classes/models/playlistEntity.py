@@ -16,7 +16,7 @@ class PlaylistEntity():
         self.__videos = videos
     
     def object_entity(self):
-        entity = {
+        return {
             "snippet": {
                 "title": self.__title,
                 "description": self.__description
@@ -25,8 +25,7 @@ class PlaylistEntity():
                 "privacyStatus": self.__privacy_status
             }
         }
-        print(entity)
-        return json.dumps(entity)
+
     
     def add_videos(self, videos: list):
         for video_name in videos:
