@@ -7,3 +7,7 @@ class item(BaseModel):
 class PlaylistItem(BaseModel):
     playlist_name: str
     playlist_musics : list
+
+class PlaylistMusics(BaseModel):
+    playlist_id: str
+    playlist_musics: list

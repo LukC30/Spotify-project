@@ -31,3 +31,13 @@ class PlaylistController:
         
         except Exception as e:
             return(f"erro: {e}")
+        
+    def add_musics(self, playlist_id: str, playlist_musics: list[str]):
+        try:
+            xisde = VideoEntity(playlist_id)
+            musics_ids = self.playlist_service.search_musics(playlist_musics)
+            print(musics_ids)
+            request = self.playlist_service.add_musics_in_playlist(musics_ids, xisde)
+            return print(f"Achoquefoi: {request}")
+        except Exception as e:
+            return print(f"pelo visto nao edeu fudeu: {e}")
