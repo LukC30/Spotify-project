@@ -35,12 +35,10 @@ class PlaylistService:
         try:
             request = self.youtube.playlists().insert(part="snippet,status", body=playlistEntity.object_entity())
             response = request.execute()
-            print(response.json())
             playlist_id = response.get("id")
-            if playlist_id:
-                print(f"Playlist criada: {playlist_id}")
-                return playlist_id
-            raise Exception("Playlist ID não encontrado.")
+            print(f"Playlist criada: {playlist_id}")
+            return playlist_id
+            # raise Exception("Playlist ID não encontrado.")
         except googleapiclient.errors.Error as e:
             return {"Error": f"Erro na criação da playlist: {e}"}
 
@@ -57,4 +55,4 @@ class PlaylistService:
     def add_musics_in_playlist(self, list_youtube_videos_id: list[str], video_entity: VideoEntity):
         for video_id in list_youtube_videos_id:
             self.add_music_in_playlist(video_id, video_entity)
-        return
+        return {"Message":"Deu tudo certo parabens"}
